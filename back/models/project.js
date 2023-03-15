@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
 const ProjectSchema = new mongoose.Schema({
-    project: {
+    projectName: {
         type: String, 
         required: true},
     author: {
