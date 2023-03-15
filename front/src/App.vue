@@ -1,6 +1,8 @@
 <script setup>
 import Header from "./components/Header.vue"
 import Footer from './components/Footer.vue'
+import MainButton from './components/buttons/MainButton.vue'
+import OutlineButton from './components/buttons/OutlineButton.vue'
 </script>
 
 <template>
@@ -9,6 +11,17 @@ import Footer from './components/Footer.vue'
 <!-- UI element to trigger the menu to post new projects -->
 <!-- UI element on page to post new projects -->
 <section class="main-body">
+<div class="btn_left">
+  <MainButton :main_btn_prop='add_project_txt' />
+</div>
+<h1>Class Projects</h1>
+
+<div class="projects_grid">
+<div class="no-projects" v-if="!project_existence">
+<p>There are no projects added yet</p>
+</div>
+
+</div>
 
 </section>
 
@@ -19,8 +32,19 @@ import Footer from './components/Footer.vue'
 <style scoped>
 .main-body {
   display: grid;
-  grid-template-rows: 1fr auto;
+  grid-template-rows: auto auto 1fr;
   min-height: 100vh;
+}
+
+.btn_left {
+  display: flex;
+  justify-content: end;
+  margin: 20px 10px;
+}
+
+h1 {
+  color:#D6741B;
+  text-align: center;
 }
 </style>
 
@@ -30,7 +54,9 @@ export default {
     return{
       projects_list:[],
       single_project:{projectName:'',author:'',imageURL:'',projectURL:''},
-      body_data:{projectName:'',author:'',imageURL:'',projectURL:''}
+      body_data:{projectName:'',author:'',imageURL:'',projectURL:''},
+      add_project_txt: '+ Add project',
+      project_existence: true
     }
   },
   methods:{
