@@ -13,7 +13,7 @@ app.use(function(req, res, next){
 });
 //DATABASE
 // **** change this below DB link to your mongoDB cluster ****
-const DB = "mongodb+srv://tinbaltz:3SIWhymQ7ZpxYHrN@classapp-formative.qujj5pb.mongodb.net/class_app_database?retryWrites=true&w=majority";//insert your mongoDB link that emerges out of the process described in teams for step by step mongoDB creation. replace <password> part with password you have given to your main user at cluster creation
+const DB = "mongodb+srv://tinbaltz:3SIWhymQ7ZpxYHrN@classapp-formative.qujj5pb.mongodb.net/class_app_database?retryWrites=true&w=majority";//insert your mongoDB link that emerges out of the process described in teams for step by step mongoDB creation. replace <password> part with password you have given to your main project at cluster creation
 const PORT = 4000;
 mongoose.connect(
     DB,
@@ -30,7 +30,7 @@ app.use(bodyParser.json());
 app.get("/", (res, req) => {
     res.send("reached homepage");
 });
-// this below 'UserRoute' is a variable for this project (not syntax)
+// this below 'ProjectRoute' is a variable for this project (not syntax)
 const ProjectsRoute = require('./routes/projects');
 app.use('/projects', ProjectsRoute);
 app.listen(PORT, () => {

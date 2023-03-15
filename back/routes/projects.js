@@ -18,7 +18,7 @@ router.post('/addproject', async (req, res) => {
 });
 
 // GET (single) User by ID
-router.get('/getuser/:id', async (req, res) => {
+router.get('/get/:id', async (req, res) => {
     const IDed_Project = await Project.findById({ _id : req.params.id });
     res.json(IDed_Project)
 });
