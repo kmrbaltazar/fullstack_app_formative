@@ -1,15 +1,29 @@
 <script setup>
-
+import Header from "./components/Header.vue"
+import Footer from './components/Footer.vue'
 </script>
 
 <template>
-TEST FRONTEND
+<Header />
 <!-- division to show all projects fetched -->
 <!-- UI element to trigger the menu to post new projects -->
 <!-- UI element on page to post new projects -->
+<section class="main-body">
+
+</section>
+
+<Footer />
+
 </template>
+
 <style scoped>
+.main-body {
+  display: grid;
+  grid-template-rows: 1fr auto;
+  min-height: 100vh;
+}
 </style>
+
 <script>
 export default {
   data(){
