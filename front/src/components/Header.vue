@@ -15,7 +15,7 @@ header {
 }
 
 .logo_wrapper {
-    width: 5%;
+    width: 50px;
 }
 
 img {
