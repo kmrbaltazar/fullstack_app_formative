@@ -27,8 +27,9 @@
         filter: drop-shadow(2px 4px 4px rgba(0, 0, 0, 0.25));
         background-color: #fff;
         padding: 5px;
-        width: 20vw;
+        width: 280px;
         gap: 10px;
+        color: #4F4F4F;
     }
 
     .project_card_container:hover {
@@ -65,6 +66,11 @@
     .project_info {
         margin: 5px 0;
         text-align: center;
+    }
+
+    h4 {
+        font-style: italic;
+        font-weight: 400;
     }
 
 
