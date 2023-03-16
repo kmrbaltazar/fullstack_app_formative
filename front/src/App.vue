@@ -3,6 +3,8 @@ import Header from "./components/Header.vue"
 import Footer from './components/Footer.vue'
 import MainButton from './components/buttons/MainButton.vue'
 import OutlineButton from './components/buttons/OutlineButton.vue'
+import AddProject from './components/AddProject.vue'
+import ProjectCard from './components/Project.vue'
 </script>
 
 <template>
@@ -10,19 +12,22 @@ import OutlineButton from './components/buttons/OutlineButton.vue'
 <!-- division to show all projects fetched -->
 <!-- UI element to trigger the menu to post new projects -->
 <!-- UI element on page to post new projects -->
+<AddProject v-if="add_project_menu_toggle" @close="add_project_menu_toggle=false" :add_project_prop="body_data" @submit="create_new_project"  />
+
 <section class="main-body">
-<div class="btn_left">
-  <MainButton :main_btn_prop='add_project_txt' />
-</div>
-<h1>Class Projects</h1>
+  <div class="btn_left">
+    <MainButton :main_btn_prop='add_project_txt' @click="add_project_menu_toggle=true" />
+  </div>
 
-<div class="projects_grid">
-<div class="no-projects" v-if="!projects_list.length">
-<p>There are no projects added yet.</p>
-</div>
+  <h1>Class Projects</h1>
 
+  <div class="no_projects" v-if="!projects_list.length">
+  <p>There are no projects added yet.</p>
+  </div>
 
-</div>
+  <div class="projects_grid">
+  <ProjectCard v-for="projectItem in projects_list" :project_obj="projectItem" @delete="delete_project(projectItem._id)"   />
+  </div>
 
 </section>
 
@@ -48,11 +53,24 @@ h1 {
   text-align: center;
 }
 
-.projects_grid {
+.no_projects {
   display: flex;
   justify-content: center;
   align-items: center;
+  text-align: center;
 } 
+
+.projects_grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(20vw,1fr));
+  grid-auto-rows: minmax(325px,auto);
+  place-content: center;
+  place-items: center;
+  width: 80vw;
+  gap: 10px;
+  margin: 0 auto;
+}
+
 </style>
 
 <script>
@@ -63,6 +81,7 @@ export default {
       single_project:{projectName:'',author:'',imageURL:'',projectURL:''},
       body_data:{projectName:'',author:'',imageURL:'',projectURL:''},
       add_project_txt: '+ Add project',
+      add_project_menu_toggle: false
     }
   },
   methods:{
@@ -99,9 +118,6 @@ export default {
       });
       const received_data = await response.json();
       this.fetch_all_projects();
-    },
-    async fetch_sample(){
-      const response = await fetch( url, { /* info about fetch */ });
     }
   },
   created(){
