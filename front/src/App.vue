@@ -17,9 +17,10 @@ import OutlineButton from './components/buttons/OutlineButton.vue'
 <h1>Class Projects</h1>
 
 <div class="projects_grid">
-<div class="no-projects" v-if="!project_existence">
-<p>There are no projects added yet</p>
+<div class="no-projects" v-if="!projects_list.length">
+<p>There are no projects added yet.</p>
 </div>
+
 
 </div>
 
@@ -46,6 +47,12 @@ h1 {
   color:#D6741B;
   text-align: center;
 }
+
+.projects_grid {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+} 
 </style>
 
 <script>
@@ -56,7 +63,6 @@ export default {
       single_project:{projectName:'',author:'',imageURL:'',projectURL:''},
       body_data:{projectName:'',author:'',imageURL:'',projectURL:''},
       add_project_txt: '+ Add project',
-      project_existence: true
     }
   },
   methods:{
