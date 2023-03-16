@@ -1,8 +1,7 @@
 <template>
     <div class="add_project_form">
-    <!-- <div class="close_parent"> -->
         <span class="close_btn" @click="$emit('close')">&#x2715</span>
-    <!-- </div> -->
+
         <div class="add_project_content">
             <h2>Add New Project</h2>
             <br>
