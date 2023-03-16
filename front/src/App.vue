@@ -5,6 +5,7 @@ import MainButton from './components/buttons/MainButton.vue'
 import OutlineButton from './components/buttons/OutlineButton.vue'
 import AddProject from './components/AddProject.vue'
 import ProjectCard from './components/Project.vue'
+import UpdateProject from './components/UpdateProject.vue'
 </script>
 
 <template>
@@ -12,11 +13,12 @@ import ProjectCard from './components/Project.vue'
 <!-- division to show all projects fetched -->
 <!-- UI element to trigger the menu to post new projects -->
 <!-- UI element on page to post new projects -->
-<AddProject v-if="add_project_menu_toggle" @close="add_project_menu_toggle=false" :add_project_prop="body_data" @submit="create_new_project"  />
+<AddProject v-if="add_project_menu_toggle" @close="add_project_menu_toggle=false" :add_project_prop="body_data" @submit="submitted"  />
+<UpdateProject v-if="update_project_menu_toggle" :updated_project_prop="body_data" @updateInfo="updated" @closeUpdate="update_project_menu_toggle=false"  />
 
 <section class="main-body">
   <div class="btn_left">
-    <MainButton :main_btn_prop='add_project_txt' @click="add_project_menu_toggle=true" />
+    <MainButton :main_btn_prop='add_project_txt' @click="add_project_menu_toggle=true;" />
   </div>
 
   <h1>Class Projects</h1>
@@ -26,7 +28,7 @@ import ProjectCard from './components/Project.vue'
   </div>
 
   <div class="projects_grid">
-  <ProjectCard v-for="projectItem in projects_list" :project_obj="projectItem" @delete="delete_project(projectItem._id)"   />
+  <ProjectCard v-for="projectItem in projects_list" :project_obj="projectItem" @delete="delete_project(projectItem._id)" @update="update_project_menu_toggle=true; currently_updated_id=projectItem._id; body_data=projectItem" />
   </div>
 
 </section>
@@ -62,11 +64,11 @@ h1 {
 
 .projects_grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(20vw,1fr));
+  grid-template-columns: repeat(auto-fill, minmax(280px,1fr));
   grid-auto-rows: minmax(325px,auto);
   place-content: center;
   place-items: center;
-  width: 80vw;
+  width: 70vw;
   gap: 10px;
   margin: 0 auto;
 }
@@ -81,7 +83,9 @@ export default {
       single_project:{projectName:'',author:'',imageURL:'',projectURL:''},
       body_data:{projectName:'',author:'',imageURL:'',projectURL:''},
       add_project_txt: '+ Add project',
-      add_project_menu_toggle: false
+      add_project_menu_toggle: false,
+      update_project_menu_toggle: false,
+      currently_updated_id: ''
     }
   },
   methods:{
@@ -118,6 +122,14 @@ export default {
       });
       const received_data = await response.json();
       this.fetch_all_projects();
+    },
+    submitted(){
+      this.create_new_project();
+      this.add_project_menu_toggle=false;
+    },
+    updated(){
+      this.update_project(this.currently_updated_id);
+      this.update_project_menu_toggle=false;
     }
   },
   created(){
