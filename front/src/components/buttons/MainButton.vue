@@ -19,6 +19,7 @@
 
 .button-wrapper:hover {
     background-color: #AB5201;
+    cursor: pointer;
 }
 </style>
 
