@@ -5,13 +5,13 @@
         </div>
         <div class="project_info">
             <h3>{{ project_obj.projectName }}</h3>
-            <h4>{{ project_obj.author }}</h4>
+            <h4>by {{ project_obj.author }}</h4>
         </div>
         <div class="button_options" v-if="selected">
             <a :href="project_obj.projectURL" target="_blank">
                 <MainButton :main_btn_prop="view_source_txt" />
             </a>
-            <OutlineButton :outline_btn_prop="update_txt" />
+            <OutlineButton :outline_btn_prop="update_txt" @click="$emit('update')" />
             <h5 class="delete" @click="$emit('delete')">Delete</h5>
         </div>
     </div>
@@ -55,6 +55,16 @@
         flex-direction: column;
         gap: 5px;
         justify-content: center;
+    }
+
+    .image_wrapper {
+        width: 100%;
+        height: 170px;
+    }
+
+    .project_info {
+        margin: 5px 0;
+        text-align: center;
     }
 
 
