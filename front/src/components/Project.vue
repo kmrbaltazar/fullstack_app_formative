@@ -30,6 +30,8 @@
         width: 280px;
         gap: 10px;
         color: #4F4F4F;
+        margin: 0 auto;
+        height: fit-content;
     }
 
     .project_card_container:hover {

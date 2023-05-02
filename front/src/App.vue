@@ -53,6 +53,7 @@ import UpdateProject from './components/UpdateProject.vue'
 h1 {
   color:#D6741B;
   text-align: center;
+  margin-bottom: 30px;
 }
 
 .no_projects {
@@ -66,8 +67,6 @@ h1 {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(280px,1fr));
   grid-auto-rows: minmax(325px,auto);
-  place-content: center;
-  place-items: center;
   width: 70vw;
   gap: 10px;
   margin: 0 auto;
