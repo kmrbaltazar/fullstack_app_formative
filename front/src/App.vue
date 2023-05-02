@@ -70,6 +70,7 @@ h1 {
   width: 70vw;
   gap: 10px;
   margin: 0 auto;
+  padding-bottom: 50px;
 }
 
 </style>

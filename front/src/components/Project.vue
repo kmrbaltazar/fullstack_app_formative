@@ -26,7 +26,7 @@
         border-radius: 10px;
         filter: drop-shadow(2px 4px 4px rgba(0, 0, 0, 0.25));
         background-color: #fff;
-        padding: 5px;
+        padding-bottom: 10px;
         width: 280px;
         gap: 10px;
         color: #4F4F4F;
@@ -63,6 +63,10 @@
     .image_wrapper {
         width: 100%;
         height: 170px;
+    }
+
+    img {
+        border-radius: 10px 10px 0 0;
     }
 
     .project_info {
