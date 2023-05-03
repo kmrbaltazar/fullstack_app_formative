@@ -68,6 +68,7 @@
         width: 50%;
         display: flex;
         justify-content: space-between;
+        flex-wrap: wrap;
     }
 
     input {
@@ -90,6 +91,16 @@
         justify-content: center;
         align-items: center;
         padding: 80px 20px ;
+    }
+
+    @media (max-width: 62em) {
+        .input_div {
+            font-size: 12px;
+        }
+
+        input {
+            width: 100%;
+        }
     }
 </style>
 
