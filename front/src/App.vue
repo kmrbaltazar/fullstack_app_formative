@@ -71,6 +71,7 @@ h1 {
   gap: 10px;
   margin: 0 auto;
   padding-bottom: 50px;
+  place-content: start;
 }
 
 </style>
