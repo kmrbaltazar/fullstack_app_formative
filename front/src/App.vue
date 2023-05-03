@@ -21,7 +21,7 @@ import UpdateProject from './components/UpdateProject.vue'
     <MainButton :main_btn_prop='add_project_txt' @click="add_project_menu_toggle=true;" />
   </div>
 
-  <h1>Class Projects</h1>
+  <h1>Tin's Projects</h1>
 
   <div class="no_projects" v-if="!projects_list.length">
   <p>There are no projects added yet.</p>
@@ -53,7 +53,7 @@ import UpdateProject from './components/UpdateProject.vue'
 h1 {
   color:#D6741B;
   text-align: center;
-  margin-bottom: 30px;
+  margin-bottom: 5%;
 }
 
 .no_projects {
